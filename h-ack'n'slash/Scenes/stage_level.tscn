@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://biatyb20oxrpx"]
+[gd_scene load_steps=6 format=3 uid="uid://biatyb20oxrpx"]
 
 [ext_resource type="Texture2D" uid="uid://b2cfs8fjqdccm" path="res://Base Art/Background/TileSet-36x36.png" id="1_fjht0"]
 [ext_resource type="Texture2D" uid="uid://cgo8tc4sl4sqt" path="res://Base Art/Background/Background.png" id="1_v7avy"]
+[ext_resource type="PackedScene" uid="uid://dmp5fivxqc1o8" path="res://Scenes/player.tscn" id="3_gb4vg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v7avy"]
 texture = ExtResource("1_fjht0")
@@ -68,4 +69,5 @@ layer_0/tile_data = PackedInt32Array(458754, 65536, 1, 524290, 65536, 2, 589826,
 layer_1/name = "Layer1"
 layer_1/tile_data = PackedInt32Array(851975, 131072, 0, 851980, 131072, 0, 851981, 196608, 0, 851989, 196608, 0, 851991, 196608, 0, 851995, 196608, 0, 851996, 131072, 0)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Player" parent="." instance=ExtResource("3_gb4vg")]
+position = Vector2(377, 327)

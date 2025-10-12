@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bj0uox3xl1ior"]
+[gd_scene load_steps=11 format=3 uid="uid://bj0uox3xl1ior"]
 
 [ext_resource type="Texture2D" uid="uid://cgo8tc4sl4sqt" path="res://Base Art/Background/Background.png" id="1_tq2lp"]
 [ext_resource type="Texture2D" uid="uid://jdltcbhl708o" path="res://Base Art/Background/Bushes-16x16.png" id="2_x3m8e"]
 [ext_resource type="Texture2D" uid="uid://b2cfs8fjqdccm" path="res://Base Art/Background/TileSet-36x36.png" id="3_e34w3"]
 [ext_resource type="Texture2D" uid="uid://b8lswp6hwl6vx" path="res://Base Art/Background/House1.png" id="4_n0tpq"]
 [ext_resource type="Texture2D" uid="uid://cu3btvm0ismk2" path="res://Base Art/Background/Tree1.png" id="5_lnnip"]
+[ext_resource type="PackedScene" uid="uid://dmp5fivxqc1o8" path="res://Scenes/player.tscn" id="6_x3m8e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o1qmv"]
 texture = ExtResource("2_x3m8e")
@@ -114,3 +115,10 @@ texture = ExtResource("4_n0tpq")
 [node name="Tree1" type="Sprite2D" parent="BackgroundSprites"]
 position = Vector2(69, 145)
 texture = ExtResource("5_lnnip")
+
+[node name="Player" parent="." instance=ExtResource("6_x3m8e")]
+position = Vector2(328, 111)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(329, 113)
+zoom = Vector2(2.5, 2.5)
