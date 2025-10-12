@@ -7,10 +7,8 @@ const jump_power = -350.0
 
 var gravity = 900
 
-var weapon_equip: bool
-
 func _ready():
-	weapon_equip = false
+	pass
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -33,6 +31,7 @@ func _physics_process(delta: float) -> void:
 	handle_movement_animation(direction)
 	
 func handle_movement_animation(dir):
+	var weapon_equip = Global.playerWeaponEquip
 	if !weapon_equip:
 		if is_on_floor():
 			if !velocity:

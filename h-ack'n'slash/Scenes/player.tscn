@@ -423,9 +423,7 @@ shape = SubResource("CircleShape2D_2ooml")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-3, 1)
-enabled = false
 zoom = Vector2(2.5, 2.5)
-limit_left = 72
-limit_top = 100
-limit_right = 1117
+limit_left = 68
+limit_right = 1120
 limit_bottom = 560

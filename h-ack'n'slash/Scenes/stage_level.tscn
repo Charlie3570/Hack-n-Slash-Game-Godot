@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://biatyb20oxrpx"]
+[gd_scene load_steps=7 format=3 uid="uid://biatyb20oxrpx"]
 
+[ext_resource type="Script" uid="uid://c5g6tawce1qhm" path="res://Scenes/stage_level.gd" id="1_7fd2v"]
 [ext_resource type="Texture2D" uid="uid://b2cfs8fjqdccm" path="res://Base Art/Background/TileSet-36x36.png" id="1_fjht0"]
 [ext_resource type="Texture2D" uid="uid://cgo8tc4sl4sqt" path="res://Base Art/Background/Background.png" id="1_v7avy"]
 [ext_resource type="PackedScene" uid="uid://dmp5fivxqc1o8" path="res://Scenes/player.tscn" id="3_gb4vg"]
@@ -56,6 +57,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_v7avy")
 
 [node name="StageLevel" type="Node2D"]
+script = ExtResource("1_7fd2v")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(581.25, 206.0625)
@@ -71,3 +73,6 @@ layer_1/tile_data = PackedInt32Array(851975, 131072, 0, 851980, 131072, 0, 85198
 
 [node name="Player" parent="." instance=ExtResource("3_gb4vg")]
 position = Vector2(377, 327)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(1123, 304)
