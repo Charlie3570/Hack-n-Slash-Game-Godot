@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dhqgtw2wmjuh1"]
+[gd_scene load_steps=30 format=3 uid="uid://dhqgtw2wmjuh1"]
 
 [ext_resource type="Script" uid="uid://ces2grq6qvhje" path="res://Script/bat_enemey.gd" id="1_cox1u"]
 [ext_resource type="Texture2D" uid="uid://1bxfl6aqclkf" path="res://Base Art/Bat/Standard/BatStandard_Attack.png" id="2_duayy"]
@@ -137,7 +137,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ekvp2")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -179,13 +179,15 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_iax06"]
 radius = 6.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_cox1u"]
+radius = 7.0
+
 [node name="BatEnemey" type="CharacterBody2D"]
 script = ExtResource("1_cox1u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1ytbu")
-animation = &"fly"
-frame_progress = 0.8687849
+animation = &"hurt"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_iax06")
@@ -193,4 +195,10 @@ shape = SubResource("CircleShape2D_iax06")
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="BatHitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BatHitBox"]
+shape = SubResource("CircleShape2D_cox1u")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="BatHitBox" to="." method="_on_bat_hit_box_area_entered"]

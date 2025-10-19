@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://dmp5fivxqc1o8"]
+[gd_scene load_steps=64 format=3 uid="uid://dmp5fivxqc1o8"]
 
 [ext_resource type="Texture2D" uid="uid://c1ey3e84kcins" path="res://Base Art/Dacian Warrior Animated Pixel-Art 2D/Dacian Warrior Animated Pixel-Art 2D/Idle/50x50/Idle Sprite 1.png" id="1_chwn1"]
 [ext_resource type="Script" uid="uid://da5fwqsji674k" path="res://Script/player.gd" id="1_hvaui"]
@@ -413,6 +413,10 @@ radius = 5.0990195
 [sub_resource type="CircleShape2D" id="CircleShape2D_tx1dd"]
 radius = 8.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tx1dd"]
+radius = 5.0
+height = 24.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_hvaui")
 
@@ -426,7 +430,7 @@ shape = SubResource("CircleShape2D_2ooml")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-3, 1)
-zoom = Vector2(2.3, 2.3)
+zoom = Vector2(2.6, 2.6)
 limit_left = 68
 limit_right = 1120
 limit_bottom = 560
@@ -437,5 +441,11 @@ limit_bottom = 560
 position = Vector2(9, 2)
 shape = SubResource("CircleShape2D_tx1dd")
 disabled = true
+
+[node name="PlayerHitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitBox"]
+position = Vector2(1, 6)
+shape = SubResource("CapsuleShape2D_tx1dd")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

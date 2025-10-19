@@ -13,45 +13,56 @@ var weapon_equip = Global.playerWeaponEquip
 
 var gravity = 900
 
+var health = 100
+var health_max = 100
+var health_min = 0
+var can_take_damage: bool
+var dead: bool
+
 func _ready():
 	Global.playerBody = self
 	current_attack = false
+	dead = false
+	can_take_damage = true
 
 func _physics_process(delta):
 	weapon_equip = Global.playerWeaponEquip
 	Global.playerDamageZone = deal_damage_zone
 	# Add the gravity.
+
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	if !dead:
+		# Handle jump.
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y = jump_power
 
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jump_power
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("left", "right")
-	if direction != 0:
-		toggle_flip_sprite(direction)
-	if direction:
-		velocity.x = direction * speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-	if weapon_equip and !current_attack:
-		if Input.is_action_just_pressed("left_mouse") or Input.is_action_just_pressed("right_mouse"):
-			current_attack = true
-			if Input.is_action_just_pressed("left_mouse") and is_on_floor():
-				attack_type = "single"
-			elif Input.is_action_just_pressed("right_mouse") and is_on_floor():
-				attack_type = "double"
-			else:
-				attack_type = "air"
-			set_damage(attack_type)
-			handle_attack_animation(attack_type)
-			
+		# Get the input direction and handle the movement/deceleration.
+		# As good practice, you should replace UI actions with custom gameplay actions.
+		var direction := Input.get_axis("left", "right")
+		if direction != 0:
+			toggle_flip_sprite(direction)
+		if direction:
+			velocity.x = direction * speed
+		else:
+			velocity.x = move_toward(velocity.x, 0, speed)
+		if weapon_equip and !current_attack:
+			if Input.is_action_just_pressed("left_mouse") or Input.is_action_just_pressed("right_mouse"):
+				current_attack = true
+				if Input.is_action_just_pressed("left_mouse") and is_on_floor():
+					attack_type = "single"
+				elif Input.is_action_just_pressed("right_mouse") and is_on_floor():
+					attack_type = "double"
+				else:
+					attack_type = "air"
+				set_damage(attack_type)
+				handle_attack_animation(attack_type)
+		handle_movement_animation(direction)
+		check_hitbox()		
 	move_and_slide()
-	handle_movement_animation(direction)
 	
+func check_hitbox():
+	pass
 func handle_movement_animation(dir):
 	if !weapon_equip:
 		if is_on_floor():
