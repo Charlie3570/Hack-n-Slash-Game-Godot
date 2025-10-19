@@ -24,7 +24,8 @@ func _ready():
 	current_attack = false
 	dead = false
 	can_take_damage = true
-
+	Global.playerAlive = true
+	
 func _physics_process(delta):
 	weapon_equip = Global.playerWeaponEquip
 	Global.playerDamageZone = deal_damage_zone
@@ -62,7 +63,47 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func check_hitbox():
-	pass
+	var hitbox_areas = $PlayerHitBox.get_overlapping_areas()
+	var damage: int
+	if hitbox_areas:
+		var hitbox = hitbox_areas.front()
+		if hitbox.get_parent() is BatEnemy:
+			damage = Global.batDamageAmount
+	if can_take_damage:
+		take_damage(damage)
+		
+func take_damage(damage):
+	if damage != 0:
+		if health > 0:
+			health -= damage
+			print(health)
+			if health <= 0:
+				dead = true
+				Global.playerAlive = false
+				handle_death_animation()
+			take_damage_cooldown(1.0)
+func handle_death_animation():
+	animated_sprite.offset.y = 6
+	animated_sprite.play("death")
+	await get_tree().create_timer(0.5).timeout
+	$Camera2D.zoom.x = 2.7
+	$Camera2D.zoom.y = 2.7
+	await get_tree().create_timer(0.5).timeout
+	$Camera2D.zoom.x = 3
+	$Camera2D.zoom.y = 3
+	await get_tree().create_timer(0.5).timeout
+	$Camera2D.zoom.x = 3.5
+	$Camera2D.zoom.y = 3.5
+	await get_tree().create_timer(0.5).timeout
+	$Camera2D.zoom.x = 4
+	$Camera2D.zoom.y = 4
+	await get_tree().create_timer(2.5).timeout
+	self.queue_free()
+
+func take_damage_cooldown(wait_time):
+	can_take_damage = false
+	await get_tree().create_timer(wait_time).timeout
+	can_take_damage = true
 func handle_movement_animation(dir):
 	if !weapon_equip:
 		if is_on_floor():

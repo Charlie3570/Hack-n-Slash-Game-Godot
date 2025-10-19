@@ -87,3 +87,6 @@ collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BatOnlyCollision"]
 polygon = PackedVector2Array(157, 221, 157, 421, 1016, 433, 1016, 380, 1119, 386, 1124, -108, 43, -108, 46, 179, -58, 176, -50, -129, 1165, -126, 1150, 514, 55, 511, 54, 168, 60, 217)
+
+[node name="BatEnemey2" parent="." instance=ExtResource("5_po6aq")]
+position = Vector2(334, 293)

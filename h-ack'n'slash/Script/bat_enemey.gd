@@ -24,6 +24,11 @@ func _process(delta):
 	Global.batDamageAmount = damage_to_deal
 	Global.batDamageZone = $BatDealDamageArea
 	
+	if Global.playerAlive:
+		is_bat_chase = true
+	elif !Global.playerAlive:
+		is_bat_chase = false
+	
 	if is_on_floor() and dead:
 		await get_tree().create_timer(3.0).timeout
 		self.queue_free()
@@ -35,7 +40,7 @@ func move(delta):
 	player = Global.playerBody
 	if !dead:
 		is_roaming = true
-		if !taking_damage and is_bat_chase:
+		if !taking_damage and is_bat_chase and Global.playerAlive:
 			velocity = position.direction_to(player.position) * speed
 			dir.x = abs(velocity.x) / velocity.x
 		elif taking_damage:
