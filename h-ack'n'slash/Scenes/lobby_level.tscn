@@ -94,8 +94,8 @@ script = ExtResource("1_e34w3")
 [node name="BackgroundSprites" type="StaticBody2D" parent="."]
 
 [node name="Background" type="Sprite2D" parent="BackgroundSprites"]
-position = Vector2(332.00003, 179.5)
-scale = Vector2(2.4368422, 1.9880002)
+position = Vector2(335, 144.5)
+scale = Vector2(2.421053, 2.268)
 texture = ExtResource("1_tq2lp")
 
 [node name="BushTileSet" type="TileMap" parent="BackgroundSprites"]

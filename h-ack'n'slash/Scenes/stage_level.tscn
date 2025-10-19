@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://biatyb20oxrpx"]
+[gd_scene load_steps=8 format=3 uid="uid://biatyb20oxrpx"]
 
 [ext_resource type="Script" uid="uid://c5g6tawce1qhm" path="res://Scenes/stage_level.gd" id="1_7fd2v"]
 [ext_resource type="Texture2D" uid="uid://b2cfs8fjqdccm" path="res://Base Art/Background/TileSet-36x36.png" id="1_fjht0"]
 [ext_resource type="Texture2D" uid="uid://cgo8tc4sl4sqt" path="res://Base Art/Background/Background.png" id="1_v7avy"]
 [ext_resource type="PackedScene" uid="uid://dmp5fivxqc1o8" path="res://Scenes/player.tscn" id="3_gb4vg"]
+[ext_resource type="PackedScene" uid="uid://dhqgtw2wmjuh1" path="res://Script/bat_enemey.tscn" id="5_po6aq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v7avy"]
 texture = ExtResource("1_fjht0")
@@ -72,7 +73,16 @@ layer_1/name = "Layer1"
 layer_1/tile_data = PackedInt32Array(851975, 131072, 0, 851980, 131072, 0, 851981, 196608, 0, 851989, 196608, 0, 851991, 196608, 0, 851995, 196608, 0, 851996, 131072, 0)
 
 [node name="Player" parent="." instance=ExtResource("3_gb4vg")]
-position = Vector2(377, 327)
+position = Vector2(413, 339)
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(1123, 304)
+[node name="BatEnemey" parent="." instance=ExtResource("5_po6aq")]
+position = Vector2(491, 329)
+collision_layer = 2
+collision_mask = 2
+
+[node name="BatOnlyCollision" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BatOnlyCollision"]
+polygon = PackedVector2Array(157, 221, 157, 421, 1016, 433, 1016, 380, 1119, 386, 1124, -108, 43, -108, 46, 179, -58, 176, -50, -129, 1165, -126, 1150, 514, 55, 511, 54, 168, 60, 217)
