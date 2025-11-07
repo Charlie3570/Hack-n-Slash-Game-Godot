@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bj0uox3xl1ior"]
+[gd_scene load_steps=14 format=3 uid="uid://bj0uox3xl1ior"]
 
 [ext_resource type="Script" uid="uid://b5f2ofk6ja3rw" path="res://Scenes/lobby_level.gd" id="1_e34w3"]
 [ext_resource type="Texture2D" uid="uid://cgo8tc4sl4sqt" path="res://Base Art/Background/Background.png" id="1_tq2lp"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b8lswp6hwl6vx" path="res://Base Art/Background/House1.png" id="4_n0tpq"]
 [ext_resource type="Texture2D" uid="uid://cu3btvm0ismk2" path="res://Base Art/Background/Tree1.png" id="5_lnnip"]
 [ext_resource type="PackedScene" uid="uid://dmp5fivxqc1o8" path="res://Scenes/player.tscn" id="6_x3m8e"]
+[ext_resource type="PackedScene" uid="uid://dyxvk6x76a35" path="res://Scenes/scene_transition.tscn" id="8_n0tpq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o1qmv"]
 texture = ExtResource("2_x3m8e")
@@ -88,6 +89,9 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_cxisy")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e34w3"]
+size = Vector2(680, 20)
+
 [node name="Lobby Level" type="Node2D"]
 script = ExtResource("1_e34w3")
 
@@ -123,4 +127,14 @@ position = Vector2(328, 111)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(329, 113)
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(1.5, 1.5)
+
+[node name="StartGameDirection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StartGameDirection"]
+position = Vector2(719, 333)
+shape = SubResource("RectangleShape2D_e34w3")
+
+[node name="Scene Transition" parent="." instance=ExtResource("8_n0tpq")]
+
+[connection signal="body_entered" from="StartGameDirection" to="." method="_on_start_game_direction_body_entered"]

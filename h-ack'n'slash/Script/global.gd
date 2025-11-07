@@ -1,5 +1,7 @@
 extends Node
 
+var gameStarted: bool
+
 var playerWeaponEquip: bool
 var playerBody: CharacterBody2D
 

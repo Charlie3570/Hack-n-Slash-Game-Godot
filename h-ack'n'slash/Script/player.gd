@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 @onready var animated_sprite = $AnimatedSprite2D 
 @onready var deal_damage_zone = $DealDamageZone
 
@@ -33,7 +35,7 @@ func _physics_process(delta):
 
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	if !dead:
+	if !dead: 
 		# Handle jump.
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = jump_power
@@ -79,25 +81,19 @@ func take_damage(damage):
 			print(health)
 			if health <= 0:
 				dead = true
-				Global.playerAlive = false
 				handle_death_animation()
 			take_damage_cooldown(1.0)
 func handle_death_animation():
+	velocity.x = 0
 	animated_sprite.offset.y = 6
 	animated_sprite.play("death")
-	await get_tree().create_timer(0.5).timeout
-	$Camera2D.zoom.x = 2.7
-	$Camera2D.zoom.y = 2.7
-	await get_tree().create_timer(0.5).timeout
-	$Camera2D.zoom.x = 3
-	$Camera2D.zoom.y = 3
-	await get_tree().create_timer(0.5).timeout
-	$Camera2D.zoom.x = 3.5
-	$Camera2D.zoom.y = 3.5
-	await get_tree().create_timer(0.5).timeout
-	$Camera2D.zoom.x = 4
-	$Camera2D.zoom.y = 4
-	await get_tree().create_timer(2.5).timeout
+	for i in range(100):
+		i +=1
+		$Camera2D.zoom.x += 0.02
+		$Camera2D.zoom.y += 0.02
+		await get_tree().create_timer(0.01).timeout
+	await get_tree().create_timer(2).timeout
+	Global.playerAlive = false
 	self.queue_free()
 
 func take_damage_cooldown(wait_time):

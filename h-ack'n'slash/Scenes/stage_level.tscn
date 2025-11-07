@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://biatyb20oxrpx"]
+[gd_scene load_steps=10 format=3 uid="uid://biatyb20oxrpx"]
 
 [ext_resource type="Script" uid="uid://c5g6tawce1qhm" path="res://Scenes/stage_level.gd" id="1_7fd2v"]
 [ext_resource type="Texture2D" uid="uid://b2cfs8fjqdccm" path="res://Base Art/Background/TileSet-36x36.png" id="1_fjht0"]
 [ext_resource type="Texture2D" uid="uid://cgo8tc4sl4sqt" path="res://Base Art/Background/Background.png" id="1_v7avy"]
 [ext_resource type="PackedScene" uid="uid://dmp5fivxqc1o8" path="res://Scenes/player.tscn" id="3_gb4vg"]
 [ext_resource type="PackedScene" uid="uid://dhqgtw2wmjuh1" path="res://Script/bat_enemey.tscn" id="5_po6aq"]
+[ext_resource type="PackedScene" uid="uid://c37ka87qqwvto" path="res://Scenes/toxic_frog.tscn" id="6_ay5av"]
+[ext_resource type="PackedScene" uid="uid://dyxvk6x76a35" path="res://Scenes/scene_transition.tscn" id="6_r1lt6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v7avy"]
 texture = ExtResource("1_fjht0")
@@ -90,3 +92,8 @@ polygon = PackedVector2Array(157, 221, 157, 421, 1016, 433, 1016, 380, 1119, 386
 
 [node name="BatEnemey2" parent="." instance=ExtResource("5_po6aq")]
 position = Vector2(334, 293)
+
+[node name="toxicFrog" parent="." instance=ExtResource("6_ay5av")]
+position = Vector2(222, 322)
+
+[node name="Scene Transition" parent="." instance=ExtResource("6_r1lt6")]
