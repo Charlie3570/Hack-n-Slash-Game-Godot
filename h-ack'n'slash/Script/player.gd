@@ -31,6 +31,7 @@ func _ready():
 func _physics_process(delta):
 	weapon_equip = Global.playerWeaponEquip
 	Global.playerDamageZone = deal_damage_zone
+	Global.playerTakeDamageZone = $PlayerHitBox
 	# Add the gravity.
 
 	if not is_on_floor():
@@ -71,6 +72,8 @@ func check_hitbox():
 		var hitbox = hitbox_areas.front()
 		if hitbox.get_parent() is BatEnemy:
 			damage = Global.batDamageAmount
+		if hitbox is FrogAttack:
+			damage = Global.frogDamageAmount
 	if can_take_damage:
 		take_damage(damage)
 		

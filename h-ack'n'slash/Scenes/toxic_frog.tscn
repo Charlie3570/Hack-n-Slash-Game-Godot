@@ -1,35 +1,8 @@
-[gd_scene load_steps=39 format=3 uid="uid://c37ka87qqwvto"]
+[gd_scene load_steps=42 format=3 uid="uid://c37ka87qqwvto"]
 
 [ext_resource type="Script" uid="uid://b6j4rx1j68ogb" path="res://toxic_frog.gd" id="1_ywud4"]
 [ext_resource type="Texture2D" uid="uid://nig073lxd81i" path="res://Base Art/ToxicFrog/PurpleBlue/ToxicFrogPurpleBlue_Sheet.png" id="2_8ae6g"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5n807"]
-atlas = ExtResource("2_8ae6g")
-region = Rect2(0, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mdly3"]
-atlas = ExtResource("2_8ae6g")
-region = Rect2(48, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cslkk"]
-atlas = ExtResource("2_8ae6g")
-region = Rect2(96, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_52cca"]
-atlas = ExtResource("2_8ae6g")
-region = Rect2(144, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xjsbw"]
-atlas = ExtResource("2_8ae6g")
-region = Rect2(192, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_74mb5"]
-atlas = ExtResource("2_8ae6g")
-region = Rect2(240, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_epusb"]
-atlas = ExtResource("2_8ae6g")
-region = Rect2(288, 48, 48, 48)
+[ext_resource type="Script" uid="uid://cof7nft7t0juy" path="res://Scenes/frog_deal_damage_area.gd" id="3_8ae6g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4u40n"]
 atlas = ExtResource("2_8ae6g")
@@ -139,34 +112,36 @@ region = Rect2(288, 0, 48, 48)
 atlas = ExtResource("2_8ae6g")
 region = Rect2(336, 0, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5n807"]
+atlas = ExtResource("2_8ae6g")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdly3"]
+atlas = ExtResource("2_8ae6g")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cslkk"]
+atlas = ExtResource("2_8ae6g")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52cca"]
+atlas = ExtResource("2_8ae6g")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjsbw"]
+atlas = ExtResource("2_8ae6g")
+region = Rect2(192, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74mb5"]
+atlas = ExtResource("2_8ae6g")
+region = Rect2(240, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epusb"]
+atlas = ExtResource("2_8ae6g")
+region = Rect2(288, 48, 48, 48)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_cjai2"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5n807")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mdly3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cslkk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_52cca")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xjsbw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_74mb5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_epusb")
-}],
-"loop": true,
-"name": &"Walk",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4u40n")
@@ -188,7 +163,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"deal_damage",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -267,17 +242,50 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5n807")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdly3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cslkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52cca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjsbw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74mb5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epusb")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d7kly"]
 radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ywud4"]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywud4"]
+size = Vector2(20, 9)
 
 [node name="toxicFrog" type="CharacterBody2D"]
 script = ExtResource("1_ywud4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cjai2")
-animation = &"death"
+animation = &"deal_damage"
+frame_progress = 0.36210173
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
@@ -286,4 +294,28 @@ shape = SubResource("CircleShape2D_d7kly")
 [node name="DirectionTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="FrogHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrogHitbox"]
+position = Vector2(-1, 1)
+shape = SubResource("CircleShape2D_ywud4")
+
+[node name="FrogDealDamageArea" type="Area2D" parent="."]
+script = ExtResource("3_8ae6g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrogDealDamageArea"]
+position = Vector2(12, 0.5)
+shape = SubResource("RectangleShape2D_ywud4")
+disabled = true
+
+[node name="FrogTongue" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrogTongue"]
+position = Vector2(12, 0.5)
+shape = SubResource("RectangleShape2D_ywud4")
+
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_d_irection_timer_timeout"]
+[connection signal="area_entered" from="FrogHitbox" to="." method="_on_frog_hitbox_area_entered"]
+[connection signal="area_entered" from="FrogDealDamageArea" to="." method="_on_frog_deal_damage_area_area_entered"]
+[connection signal="area_entered" from="FrogTongue" to="." method="_on_frog_tongue_area_entered"]
