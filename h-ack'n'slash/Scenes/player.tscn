@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://dmp5fivxqc1o8"]
+[gd_scene load_steps=65 format=3 uid="uid://dmp5fivxqc1o8"]
 
 [ext_resource type="Texture2D" uid="uid://c1ey3e84kcins" path="res://Base Art/Dacian Warrior Animated Pixel-Art 2D/Dacian Warrior Animated Pixel-Art 2D/Idle/50x50/Idle Sprite 1.png" id="1_chwn1"]
 [ext_resource type="Script" uid="uid://da5fwqsji674k" path="res://Script/player.gd" id="1_hvaui"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bi8q3br14q3jf" path="res://Base Art/Dacian Warrior Animated Pixel-Art 2D/Dacian Warrior Animated Pixel-Art 2D/Fall/50x50/Fall 1 Sprite Sheet.png" id="7_c32x4"]
 [ext_resource type="Texture2D" uid="uid://csfc4wuus6xlx" path="res://Base Art/Dacian Warrior Animated Pixel-Art 2D/Dacian Warrior Animated Pixel-Art 2D/Idle/50x50/Idle Sprite 0.png" id="8_fg7i4"]
 [ext_resource type="Texture2D" uid="uid://qfl3ehp70f3n" path="res://Base Art/Dacian Warrior Animated Pixel-Art 2D/Dacian Warrior Animated Pixel-Art 2D/Run/50x50/Run Sprite 2.png" id="9_gwne5"]
+[ext_resource type="PackedScene" uid="uid://h86hjbth0f42" path="res://Scenes/progress_bar.tscn" id="11_gymyn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_03fgm"]
 atlas = ExtResource("2_hvaui")
@@ -446,5 +447,12 @@ disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitBox"]
 shape = SubResource("CapsuleShape2D_tx1dd")
+
+[node name="ProgressBar" parent="." instance=ExtResource("11_gymyn")]
+offset_left = -14.0
+offset_top = 13.000001
+offset_right = 76.0
+offset_bottom = 36.0
+scale = Vector2(0.3, 0.3)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

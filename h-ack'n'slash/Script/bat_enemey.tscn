@@ -1,10 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://dhqgtw2wmjuh1"]
+[gd_scene load_steps=32 format=3 uid="uid://dhqgtw2wmjuh1"]
 
 [ext_resource type="Script" uid="uid://ces2grq6qvhje" path="res://Script/bat_enemey.gd" id="1_cox1u"]
 [ext_resource type="Texture2D" uid="uid://1bxfl6aqclkf" path="res://Base Art/Bat/Standard/BatStandard_Attack.png" id="2_duayy"]
 [ext_resource type="Texture2D" uid="uid://jrb8eebbspjo" path="res://Base Art/Bat/Standard/BatStandard_Death.png" id="3_di62m"]
 [ext_resource type="Texture2D" uid="uid://bstbbhsbksdp8" path="res://Base Art/Bat/Standard/BatStandard_Flying.png" id="4_h7mgm"]
 [ext_resource type="Texture2D" uid="uid://cdifngfig3q60" path="res://Base Art/Bat/Standard/BatStandard_Hurt.png" id="5_ekjql"]
+[ext_resource type="PackedScene" uid="uid://h86hjbth0f42" path="res://Scenes/progress_bar.tscn" id="6_duayy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8w20d"]
 atlas = ExtResource("2_duayy")
@@ -209,6 +210,13 @@ shape = SubResource("CircleShape2D_cox1u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BatDealDamageArea"]
 shape = SubResource("CircleShape2D_duayy")
+
+[node name="ProgressBar" parent="." instance=ExtResource("6_duayy")]
+offset_left = -6.0000005
+offset_top = 6.0000005
+offset_right = 48.999992
+offset_bottom = 29.0
+scale = Vector2(0.2, 0.2)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="BatHitBox" to="." method="_on_bat_hit_box_area_entered"]

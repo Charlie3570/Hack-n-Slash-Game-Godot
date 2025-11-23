@@ -6,8 +6,8 @@ const speed = 10
 var is_frog_chase = true
 
 var health = 80
-var healthmax = 80
-var healthmin = 0
+var health_max = 80
+var health_min = 0
 
 var dead: bool = false
 var taking_damage: bool = false
@@ -42,9 +42,12 @@ func move(delta):
 		if !is_frog_chase:
 			velocity += dir * speed * delta
 		elif is_frog_chase and !taking_damage:
-			var dir_to_player = position.direction_to(player.position) * speed
-			velocity.x = dir_to_player.x
-			dir.x = abs(velocity.x)/(velocity.x)
+			if is_instance_valid(player):
+				var dir_to_player = position.direction_to(player.position) * speed
+				velocity.x = dir_to_player.x
+				dir.x = abs(velocity.x)/(velocity.x)
+			else:
+				return
 			
 		elif taking_damage:
 			var knockback_dir = position.direction_to(player.position) * knockback_force
@@ -99,8 +102,8 @@ func _on_frog_hitbox_area_entered(area):
 func take_damage(damage):
 	health -= damage
 	taking_damage = true
-	if health <= healthmin:
-		health = healthmin
+	if health <= health_min:
+		health = health_min
 		dead = true
 	
 var shootingtongue = false

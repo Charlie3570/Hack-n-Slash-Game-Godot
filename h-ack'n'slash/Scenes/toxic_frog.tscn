@@ -1,8 +1,9 @@
-[gd_scene load_steps=42 format=3 uid="uid://c37ka87qqwvto"]
+[gd_scene load_steps=43 format=3 uid="uid://c37ka87qqwvto"]
 
 [ext_resource type="Script" uid="uid://b6j4rx1j68ogb" path="res://toxic_frog.gd" id="1_ywud4"]
 [ext_resource type="Texture2D" uid="uid://nig073lxd81i" path="res://Base Art/ToxicFrog/PurpleBlue/ToxicFrogPurpleBlue_Sheet.png" id="2_8ae6g"]
 [ext_resource type="Script" uid="uid://cof7nft7t0juy" path="res://Scenes/frog_deal_damage_area.gd" id="3_8ae6g"]
+[ext_resource type="PackedScene" uid="uid://h86hjbth0f42" path="res://Scenes/progress_bar.tscn" id="4_5n807"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4u40n"]
 atlas = ExtResource("2_8ae6g")
@@ -314,6 +315,13 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FrogTongue"]
 position = Vector2(12, 0.5)
 shape = SubResource("RectangleShape2D_ywud4")
+
+[node name="ProgressBar" parent="." instance=ExtResource("4_5n807")]
+offset_left = -15.0
+offset_top = 11.0
+offset_right = 57.499992
+offset_bottom = 34.0
+scale = Vector2(0.35, 0.35)
 
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_d_irection_timer_timeout"]
 [connection signal="area_entered" from="FrogHitbox" to="." method="_on_frog_hitbox_area_entered"]

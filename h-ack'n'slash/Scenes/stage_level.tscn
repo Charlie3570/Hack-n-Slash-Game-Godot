@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://biatyb20oxrpx"]
+[gd_scene load_steps=12 format=3 uid="uid://biatyb20oxrpx"]
 
 [ext_resource type="Script" uid="uid://c5g6tawce1qhm" path="res://Scenes/stage_level.gd" id="1_7fd2v"]
 [ext_resource type="Texture2D" uid="uid://b2cfs8fjqdccm" path="res://Base Art/Background/TileSet-36x36.png" id="1_fjht0"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dhqgtw2wmjuh1" path="res://Script/bat_enemey.tscn" id="5_po6aq"]
 [ext_resource type="PackedScene" uid="uid://c37ka87qqwvto" path="res://Scenes/toxic_frog.tscn" id="6_ay5av"]
 [ext_resource type="PackedScene" uid="uid://dyxvk6x76a35" path="res://Scenes/scene_transition.tscn" id="6_r1lt6"]
+[ext_resource type="Script" uid="uid://defql4g2t8mmk" path="res://Scenes/currentscore_label.gd" id="8_xqoqq"]
+[ext_resource type="Script" uid="uid://bomh3b7mlpmtv" path="res://Scenes/currentwavelevel_label.gd" id="9_bn4sp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v7avy"]
 texture = ExtResource("1_fjht0")
@@ -116,6 +118,7 @@ offset_top = 466.0
 offset_right = 363.0
 offset_bottom = 506.0
 text = "CURRENT SCORE: 99999"
+script = ExtResource("8_xqoqq")
 
 [node name="currentwavelevelLabel" type="RichTextLabel" parent="scoreLabels"]
 offset_left = 163.0
@@ -123,3 +126,4 @@ offset_top = 484.0
 offset_right = 369.0
 offset_bottom = 524.0
 text = "CURRENT WAVE: 99999"
+script = ExtResource("9_bn4sp")
