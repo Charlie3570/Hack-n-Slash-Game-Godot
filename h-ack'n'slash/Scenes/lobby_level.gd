@@ -6,7 +6,7 @@ extends Node2D
 func _ready():
 	SceneTransitionAnimation.get_parent().get_node("ColorRect").color.a = 225
 	SceneTransitionAnimation.play("fade_out")
-	player_camera.enabled = false
+	player_camera.enabled = true
 	Global.playerWeaponEquip = false
 
 

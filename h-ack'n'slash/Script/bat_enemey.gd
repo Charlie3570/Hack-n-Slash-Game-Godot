@@ -16,6 +16,7 @@ var dead = false
 var taking_damage = false
 var is_roaming: bool
 var damage_to_deal = 10
+var points_for_kill = 100
 
 func _ready():
 	is_bat_chase = true
@@ -31,6 +32,7 @@ func _process(delta):
 	
 	if is_on_floor() and dead:
 		await get_tree().create_timer(3.0).timeout
+		Global.current_score += points_for_kill
 		self.queue_free()
 	
 	move(delta)

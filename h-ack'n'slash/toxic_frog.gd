@@ -13,6 +13,7 @@ var dead: bool = false
 var taking_damage: bool = false
 var damage_to_deal = 20
 var is_dealing_damage: bool = false
+var points_for_kill = 250
 
 var dir: Vector2
 const gravity = 900
@@ -76,6 +77,7 @@ func handle_animation():
 		handle_death()
 		
 func handle_death():
+	Global.current_score += points_for_kill
 	self.queue_free()
 
 func _on_d_irection_timer_timeout():

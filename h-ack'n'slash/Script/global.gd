@@ -15,3 +15,10 @@ var batDamageAmount: int
 
 var frogDamageZone: Area2D
 var frogDamageAmount: int
+
+var current_wave: int
+var moving_to_next_wave: bool
+
+var high_score = 0
+var current_score: int
+var previous_score: int
